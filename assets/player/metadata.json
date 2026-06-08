@@ -1,0 +1,225 @@
+{
+  "character": {
+    "id": "ebeb8e97-56c3-48d8-b280-3e6647bde490",
+    "name": "GMITO",
+    "prompt": "Create a cute chubby blond boy character for a 2D space-themed game. He should have short messy blond hair, fair skin, and a friendly, adventurous expression. The character wears a futuristic astronaut outfit with a colorful sci-fi style: space jacket, glowing details, utility belt, futuristic boots, and small space gadgets. Add fun accessories like a transparent space helmet, jetpack, holographic wrist device, and star or planet patches on the clothes. Style: cartoon, game character design, full body, front view, high detail, vibrant colors, clean background, expressive pose, suitable for a platform/adventure game, modern indie game art style.",
+    "size": {
+      "width": 68,
+      "height": 68
+    },
+    "template_id": "mannequin",
+    "directions": 8,
+    "view": "low top-down",
+    "created_at": "2026-05-07T20:42:58.475057+00:00"
+  },
+  "frames": {
+    "rotations": {
+      "south": "rotations/south.png",
+      "south-east": "rotations/south-east.png",
+      "east": "rotations/east.png",
+      "north-east": "rotations/north-east.png",
+      "north": "rotations/north.png",
+      "north-west": "rotations/north-west.png",
+      "west": "rotations/west.png",
+      "south-west": "rotations/south-west.png"
+    },
+    "animations": {
+      "Jumping-461c5191": {
+        "east": [
+          "animations/Jumping-461c5191/east/frame_000.png",
+          "animations/Jumping-461c5191/east/frame_001.png",
+          "animations/Jumping-461c5191/east/frame_002.png",
+          "animations/Jumping-461c5191/east/frame_003.png",
+          "animations/Jumping-461c5191/east/frame_004.png",
+          "animations/Jumping-461c5191/east/frame_005.png",
+          "animations/Jumping-461c5191/east/frame_006.png",
+          "animations/Jumping-461c5191/east/frame_007.png"
+        ],
+        "south": [
+          "animations/Jumping-461c5191/south/frame_000.png",
+          "animations/Jumping-461c5191/south/frame_001.png",
+          "animations/Jumping-461c5191/south/frame_002.png",
+          "animations/Jumping-461c5191/south/frame_003.png",
+          "animations/Jumping-461c5191/south/frame_004.png",
+          "animations/Jumping-461c5191/south/frame_005.png",
+          "animations/Jumping-461c5191/south/frame_006.png",
+          "animations/Jumping-461c5191/south/frame_007.png"
+        ],
+        "west": [
+          "animations/Jumping-461c5191/west/frame_000.png",
+          "animations/Jumping-461c5191/west/frame_001.png",
+          "animations/Jumping-461c5191/west/frame_002.png",
+          "animations/Jumping-461c5191/west/frame_003.png",
+          "animations/Jumping-461c5191/west/frame_004.png",
+          "animations/Jumping-461c5191/west/frame_005.png",
+          "animations/Jumping-461c5191/west/frame_006.png",
+          "animations/Jumping-461c5191/west/frame_007.png"
+        ]
+      },
+      "Walking-0a7c6193": {
+        "east": [
+          "animations/Walking-0a7c6193/east/frame_000.png",
+          "animations/Walking-0a7c6193/east/frame_001.png",
+          "animations/Walking-0a7c6193/east/frame_002.png",
+          "animations/Walking-0a7c6193/east/frame_003.png",
+          "animations/Walking-0a7c6193/east/frame_004.png",
+          "animations/Walking-0a7c6193/east/frame_005.png"
+        ],
+        "west": [
+          "animations/Walking-0a7c6193/west/frame_000.png",
+          "animations/Walking-0a7c6193/west/frame_001.png",
+          "animations/Walking-0a7c6193/west/frame_002.png",
+          "animations/Walking-0a7c6193/west/frame_003.png",
+          "animations/Walking-0a7c6193/west/frame_004.png",
+          "animations/Walking-0a7c6193/west/frame_005.png"
+        ],
+        "south": [
+          "animations/Walking-0a7c6193/south/frame_000.png",
+          "animations/Walking-0a7c6193/south/frame_001.png",
+          "animations/Walking-0a7c6193/south/frame_002.png",
+          "animations/Walking-0a7c6193/south/frame_003.png",
+          "animations/Walking-0a7c6193/south/frame_004.png",
+          "animations/Walking-0a7c6193/south/frame_005.png"
+        ]
+      },
+      "Cross_Punch-74029694": {
+        "south": [
+          "animations/Cross_Punch-74029694/south/frame_000.png",
+          "animations/Cross_Punch-74029694/south/frame_001.png",
+          "animations/Cross_Punch-74029694/south/frame_002.png",
+          "animations/Cross_Punch-74029694/south/frame_003.png",
+          "animations/Cross_Punch-74029694/south/frame_004.png",
+          "animations/Cross_Punch-74029694/south/frame_005.png"
+        ],
+        "east": [
+          "animations/Cross_Punch-74029694/east/frame_000.png",
+          "animations/Cross_Punch-74029694/east/frame_001.png",
+          "animations/Cross_Punch-74029694/east/frame_002.png",
+          "animations/Cross_Punch-74029694/east/frame_003.png",
+          "animations/Cross_Punch-74029694/east/frame_004.png",
+          "animations/Cross_Punch-74029694/east/frame_005.png"
+        ],
+        "west": [
+          "animations/Cross_Punch-74029694/west/frame_000.png",
+          "animations/Cross_Punch-74029694/west/frame_001.png",
+          "animations/Cross_Punch-74029694/west/frame_002.png",
+          "animations/Cross_Punch-74029694/west/frame_003.png",
+          "animations/Cross_Punch-74029694/west/frame_004.png",
+          "animations/Cross_Punch-74029694/west/frame_005.png"
+        ]
+      },
+      "Running-b310a182": {
+        "south": [
+          "animations/Running-b310a182/south/frame_000.png",
+          "animations/Running-b310a182/south/frame_001.png",
+          "animations/Running-b310a182/south/frame_002.png",
+          "animations/Running-b310a182/south/frame_003.png",
+          "animations/Running-b310a182/south/frame_004.png",
+          "animations/Running-b310a182/south/frame_005.png",
+          "animations/Running-b310a182/south/frame_006.png",
+          "animations/Running-b310a182/south/frame_007.png"
+        ],
+        "east": [
+          "animations/Running-b310a182/east/frame_000.png",
+          "animations/Running-b310a182/east/frame_001.png",
+          "animations/Running-b310a182/east/frame_002.png",
+          "animations/Running-b310a182/east/frame_003.png",
+          "animations/Running-b310a182/east/frame_004.png",
+          "animations/Running-b310a182/east/frame_005.png",
+          "animations/Running-b310a182/east/frame_006.png",
+          "animations/Running-b310a182/east/frame_007.png"
+        ],
+        "west": [
+          "animations/Running-b310a182/west/frame_000.png",
+          "animations/Running-b310a182/west/frame_001.png",
+          "animations/Running-b310a182/west/frame_002.png",
+          "animations/Running-b310a182/west/frame_003.png",
+          "animations/Running-b310a182/west/frame_004.png",
+          "animations/Running-b310a182/west/frame_005.png",
+          "animations/Running-b310a182/west/frame_006.png",
+          "animations/Running-b310a182/west/frame_007.png"
+        ]
+      },
+      "Crouching-678e7e84": {
+        "south": [
+          "animations/Crouching-678e7e84/south/frame_000.png",
+          "animations/Crouching-678e7e84/south/frame_001.png",
+          "animations/Crouching-678e7e84/south/frame_002.png",
+          "animations/Crouching-678e7e84/south/frame_003.png",
+          "animations/Crouching-678e7e84/south/frame_004.png"
+        ],
+        "east": [
+          "animations/Crouching-678e7e84/east/frame_000.png",
+          "animations/Crouching-678e7e84/east/frame_001.png",
+          "animations/Crouching-678e7e84/east/frame_002.png",
+          "animations/Crouching-678e7e84/east/frame_003.png",
+          "animations/Crouching-678e7e84/east/frame_004.png"
+        ],
+        "west": [
+          "animations/Crouching-678e7e84/west/frame_000.png",
+          "animations/Crouching-678e7e84/west/frame_001.png",
+          "animations/Crouching-678e7e84/west/frame_002.png",
+          "animations/Crouching-678e7e84/west/frame_003.png",
+          "animations/Crouching-678e7e84/west/frame_004.png"
+        ]
+      },
+      "Flying_Kick-822f2bf4": {
+        "east": [
+          "animations/Flying_Kick-822f2bf4/east/frame_000.png",
+          "animations/Flying_Kick-822f2bf4/east/frame_001.png",
+          "animations/Flying_Kick-822f2bf4/east/frame_002.png",
+          "animations/Flying_Kick-822f2bf4/east/frame_003.png",
+          "animations/Flying_Kick-822f2bf4/east/frame_004.png",
+          "animations/Flying_Kick-822f2bf4/east/frame_005.png"
+        ],
+        "south": [
+          "animations/Flying_Kick-822f2bf4/south/frame_000.png",
+          "animations/Flying_Kick-822f2bf4/south/frame_001.png",
+          "animations/Flying_Kick-822f2bf4/south/frame_002.png",
+          "animations/Flying_Kick-822f2bf4/south/frame_003.png",
+          "animations/Flying_Kick-822f2bf4/south/frame_004.png",
+          "animations/Flying_Kick-822f2bf4/south/frame_005.png"
+        ],
+        "west": [
+          "animations/Flying_Kick-822f2bf4/west/frame_000.png",
+          "animations/Flying_Kick-822f2bf4/west/frame_001.png",
+          "animations/Flying_Kick-822f2bf4/west/frame_002.png",
+          "animations/Flying_Kick-822f2bf4/west/frame_003.png",
+          "animations/Flying_Kick-822f2bf4/west/frame_004.png",
+          "animations/Flying_Kick-822f2bf4/west/frame_005.png"
+        ]
+      },
+      "Throw_Object-9f1233fa": {
+        "south": [
+          "animations/Throw_Object-9f1233fa/south/frame_000.png",
+          "animations/Throw_Object-9f1233fa/south/frame_001.png",
+          "animations/Throw_Object-9f1233fa/south/frame_002.png",
+          "animations/Throw_Object-9f1233fa/south/frame_003.png",
+          "animations/Throw_Object-9f1233fa/south/frame_004.png",
+          "animations/Throw_Object-9f1233fa/south/frame_005.png",
+          "animations/Throw_Object-9f1233fa/south/frame_006.png"
+        ],
+        "east": [
+          "animations/Throw_Object-9f1233fa/east/frame_000.png",
+          "animations/Throw_Object-9f1233fa/east/frame_001.png",
+          "animations/Throw_Object-9f1233fa/east/frame_002.png",
+          "animations/Throw_Object-9f1233fa/east/frame_003.png",
+          "animations/Throw_Object-9f1233fa/east/frame_004.png",
+          "animations/Throw_Object-9f1233fa/east/frame_005.png",
+          "animations/Throw_Object-9f1233fa/east/frame_006.png"
+        ],
+        "west": [
+          "animations/Throw_Object-9f1233fa/west/frame_000.png",
+          "animations/Throw_Object-9f1233fa/west/frame_001.png",
+          "animations/Throw_Object-9f1233fa/west/frame_002.png",
+          "animations/Throw_Object-9f1233fa/west/frame_003.png",
+          "animations/Throw_Object-9f1233fa/west/frame_004.png",
+          "animations/Throw_Object-9f1233fa/west/frame_005.png",
+          "animations/Throw_Object-9f1233fa/west/frame_006.png"
+        ]
+      }
+    }
+  },
+  "export_version": "2.0",
+  "export_date": "2026-05-08T00:22:10.458327"
+}
