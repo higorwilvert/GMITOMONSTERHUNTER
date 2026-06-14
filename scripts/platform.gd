@@ -26,6 +26,7 @@ var terrain_theme := "moon"
 var slippery := false
 
 
+
 func setup(top_left: Vector2, size: Vector2, theme: String, is_slippery := false) -> void:
 	position = top_left + size * 0.5
 	platform_size = size
@@ -35,7 +36,6 @@ func setup(top_left: Vector2, size: Vector2, theme: String, is_slippery := false
 	collision_mask = 0
 	_build_collision()
 	_build_visuals()
-
 
 func is_slippery() -> bool:
 	return slippery
@@ -204,3 +204,4 @@ func _kenney_tile_region(tile_id: int) -> Rect2:
 	var row: int = int(tile_id / KENNEY_TILE_COLUMNS)
 	var step: int = KENNEY_TILE_SIZE + KENNEY_TILE_GAP
 	return Rect2(col * step, row * step, KENNEY_TILE_SIZE, KENNEY_TILE_SIZE)
+	

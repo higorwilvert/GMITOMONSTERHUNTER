@@ -18,4 +18,3 @@ func _physics_process(delta: float) -> void:
 	time += delta
 	var t := (sin((time / move_duration) * TAU) + 1.0) * 0.5
 	position = origin_position + move_offset * t
-
