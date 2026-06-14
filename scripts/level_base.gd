@@ -24,6 +24,8 @@ var tutorial_hint_label: Label
 func _ready() -> void:
 	add_to_group("levels")
 	_configure_level()
+	if not GameState.music_enabled_changed.is_connected(_on_music_enabled_changed):
+		GameState.music_enabled_changed.connect(_on_music_enabled_changed)
 	_play_level_music()
 	GameState.set_checkpoint(spawn_position)
 	_add_background()
@@ -51,8 +53,8 @@ func _configure_level() -> void:
 			spawn_position = Vector2(100, 640)
 		3:
 			theme = "ice"
-			world_width = 5100
-			level_bottom = 940
+			world_width = 7600
+			level_bottom = 1040
 			spawn_position = Vector2(100, 640)
 		_:
 			theme = "moon"
@@ -161,35 +163,78 @@ func _build_level_two() -> void:
 
 func _build_level_three() -> void:
 	_add_world_label(Vector2(110, 485), "Planeta Congelado")
-	_add_platform(Rect2(0, 680, 500, 96), true)
-	_add_platform(Rect2(650, 625, 310, 64), true)
-	_add_moving_platform(Rect2(1120, 610, 250, 48), Vector2(260, -110), 2.4, true)
-	_add_platform(Rect2(1600, 560, 350, 64), true)
-	_add_moving_platform(Rect2(2200, 650, 240, 48), Vector2(0, -190), 2.0, true)
-	_add_platform(Rect2(2700, 590, 360, 64), true)
-	_add_platform(Rect2(3340, 660, 380, 96), true)
-	_add_platform(Rect2(3900, 650, 920, 96), true)
-	_add_platform(Rect2(4700, 520, 160, 48), true)
+	_add_world_label(Vector2(4050, 505), "Ventos frios e plataformas moveis")
+	_add_world_label(Vector2(6180, 500), "Arena do Dr. Vazio")
 
-	_add_hazard(Rect2(520, 735, 120, 54), "ice_spikes")
-	_add_hazard(Rect2(1980, 735, 190, 54), "ice_spikes")
-	_add_hazard(Rect2(3090, 735, 210, 54), "ice_spikes")
+	_add_platform(Rect2(0, 680, 760, 280), true)
+	_add_platform(Rect2(980, 700, 650, 260), true)
+	_add_platform(Rect2(1920, 680, 600, 280), true)
+	_add_platform(Rect2(2820, 690, 720, 270), true)
+	_add_platform(Rect2(3920, 670, 640, 290), true)
+	_add_platform(Rect2(5600, 690, 500, 270), true)
+	_add_platform(Rect2(6260, 680, 1180, 280), true)
 
-	_add_checkpoint(Vector2(3380, 660))
-	_add_enemy(Vector2(780, 555), 660, 940, true, 95)
-	_add_enemy(Vector2(1750, 490), 1620, 1930, false, 110)
-	_add_enemy(Vector2(2880, 510), 2720, 3040, true, 105)
-	_add_enemy(Vector2(3540, 585), 3360, 3700, true, 120)
+	_add_platform(Rect2(760, 420, 760, 52), true)
+	_add_platform(Rect2(1680, 405, 760, 52), true)
+	_add_platform(Rect2(2920, 420, 760, 52), true)
+	_add_platform(Rect2(4380, 390, 700, 52), true)
+	_add_platform(Rect2(5850, 430, 360, 52), true)
+
+	_add_moving_platform(Rect2(1620, 590, 260, 48), Vector2(220, -120), 2.35, true)
+	_add_moving_platform(Rect2(2520, 610, 250, 48), Vector2(0, -170), 2.2, true)
+	_add_moving_platform(Rect2(3600, 570, 260, 48), Vector2(260, -125), 2.4, true)
+	_add_moving_platform(Rect2(5080, 610, 260, 48), Vector2(280, -150), 2.15, true)
+
+	_add_ladder(Vector2(705, 420), 6)
+	_add_ladder(Vector2(1625, 405), 7)
+	_add_ladder(Vector2(2865, 420), 6)
+	_add_ladder(Vector2(4325, 390), 7)
+
+	_add_hazard(Rect2(780, 780, 180, 70), "ice_spikes")
+	_add_hazard(Rect2(1660, 790, 230, 70), "ice_spikes")
+	_add_hazard(Rect2(2540, 790, 260, 70), "ice_spikes")
+	_add_hazard(Rect2(3560, 785, 340, 70), "ice_spikes")
+	_add_hazard(Rect2(5100, 795, 460, 70), "ice_spikes")
+	_add_hazard(Rect2(6105, 780, 145, 70), "ice_spikes")
+
+	_add_checkpoint(Vector2(2910, 690))
+	_add_checkpoint(Vector2(5650, 690))
+
+	_add_enemy(Vector2(520, 680), 100, 720, false, 92, "purple")
+	_add_enemy(Vector2(1220, 420), 800, 1500, false, 88, "green")
+	_add_enemy(Vector2(1440, 700), 1020, 1600, false, 108, "purple")
+	_add_enemy(Vector2(2140, 680), 1940, 2480, false, 112, "green")
+	_add_enemy(Vector2(2320, 405), 1710, 2420, false, 105, "purple")
+	_add_enemy(Vector2(3190, 690), 2850, 3520, false, 118, "purple")
+	_add_enemy(Vector2(3440, 420), 2960, 3660, false, 110, "green")
+	_add_enemy(Vector2(4270, 670), 3950, 4540, false, 124, "purple")
+	_add_enemy(Vector2(4720, 390), 4410, 5060, false, 112, "green")
+	_add_enemy(Vector2(5860, 690), 5620, 6080, false, 128, "purple")
+	_add_enemy(Vector2(1040, 330), 790, 1510, true, 100, "bat")
+	_add_enemy(Vector2(2030, 310), 1700, 2420, true, 112, "bat")
+	_add_enemy(Vector2(3060, 315), 2860, 3670, true, 116, "bat")
+	_add_enemy(Vector2(4140, 520), 3940, 4560, true, 118, "bat")
+	_add_enemy(Vector2(5300, 500), 5070, 5580, true, 126, "bat")
 
 	for point in [
-		Vector2(230, 605), Vector2(350, 605), Vector2(720, 545), Vector2(870, 545),
-		Vector2(1190, 510), Vector2(1390, 420), Vector2(1670, 485), Vector2(1875, 485),
-		Vector2(2250, 470), Vector2(2410, 430), Vector2(2780, 515), Vector2(2980, 515),
-		Vector2(3450, 585), Vector2(3640, 585), Vector2(4010, 575), Vector2(4190, 575)
+		Vector2(250, 610), Vector2(420, 610), Vector2(620, 610),
+		Vector2(850, 350), Vector2(1040, 350), Vector2(1320, 350),
+		Vector2(1110, 630), Vector2(1340, 630), Vector2(1560, 630),
+		Vector2(1740, 335), Vector2(1940, 335), Vector2(2220, 335),
+		Vector2(1990, 610), Vector2(2220, 610), Vector2(2440, 610),
+		Vector2(2640, 500), Vector2(2860, 610), Vector2(3130, 610),
+		Vector2(3020, 350), Vector2(3300, 350), Vector2(3600, 350),
+		Vector2(3980, 600), Vector2(4260, 600), Vector2(4520, 600),
+		Vector2(4470, 320), Vector2(4780, 320), Vector2(5040, 320),
+		Vector2(5220, 500), Vector2(5630, 620), Vector2(5900, 620),
+		Vector2(5910, 360), Vector2(6100, 360), Vector2(6350, 610),
+		Vector2(7100, 610), Vector2(7320, 610)
 	]:
 		_add_collectible(point, "sweet")
-	_add_collectible(Vector2(2440, 470), "energy")
-	_add_collectible(Vector2(3660, 585), "heart")
+	_add_collectible(Vector2(1510, 350), "energy")
+	_add_collectible(Vector2(3710, 350), "energy")
+	_add_collectible(Vector2(6040, 360), "energy")
+	_add_collectible(Vector2(5740, 620), "heart")
 
 
 func _spawn_player() -> void:
@@ -207,15 +252,42 @@ func retry_from_checkpoint() -> void:
 
 
 func _play_level_music() -> void:
-	if DisplayServer.get_name() == "headless" or level_id != 1:
+	if DisplayServer.get_name() == "headless":
+		return
+	var music_path := _level_music_path()
+	if music_path.is_empty():
 		return
 	music_player = AudioStreamPlayer.new()
-	music_player.stream = load("res://assets/music_pack/moonlit_vale.ogg")
+	music_player.process_mode = Node.PROCESS_MODE_ALWAYS
+	music_player.stream = load(music_path)
 	if music_player.stream != null and "loop" in music_player.stream:
 		music_player.stream.loop = true
 	music_player.volume_db = -10.0
 	add_child(music_player)
-	music_player.play()
+	if GameState.music_enabled:
+		music_player.play()
+
+
+func _level_music_path() -> String:
+	match level_id:
+		1:
+			return "res://assets/music_pack/moonlit_vale.ogg"
+		2:
+			return "res://assets/music_pack/legends_of_the_flame.ogg"
+		3:
+			return "res://assets/music_pack/frostbound_path.ogg"
+		_:
+			return ""
+
+
+func _on_music_enabled_changed(enabled: bool) -> void:
+	if music_player == null:
+		return
+	if enabled:
+		if not music_player.playing:
+			music_player.play()
+	else:
+		music_player.stop()
 
 
 func _add_tutorial_overlay() -> void:
@@ -380,16 +452,16 @@ func _add_food_decor(position_to_use: Vector2, tile_name: String, scale := 2.6) 
 
 func _add_boss() -> void:
 	var boss = BOSS_SCENE.instantiate()
-	boss.global_position = Vector2(4330, 650)
+	boss.global_position = Vector2(6820, 680)
 	add_child(boss)
-	boss.setup(3970, 4680, player)
+	boss.setup(6360, 7240, player, 780.0)
 	boss.defeated.connect(_on_boss_defeated)
-	_add_world_label(Vector2(3920, 485), "Dr. Vazio")
+	_add_world_label(Vector2(6540, 500), "Dr. Vazio")
 
 
 func _on_boss_defeated() -> void:
-	_add_collectible(Vector2(4780, 470), "can")
-	_add_world_label(Vector2(4470, 430), "A lata final apareceu")
+	_add_collectible(Vector2(7300, 610), "can")
+	_add_world_label(Vector2(6940, 500), "A lata final apareceu")
 
 
 func _add_world_label(position_to_use: Vector2, text: String) -> void:

@@ -1,0 +1,7 @@
+res://scripts/projectile.gd
+res://scripts/boss_dr_vazio.gd
+res://scripts/hazard.gd
+res://scripts/level_base.gd
+res://scripts/platform.gd
+res://scripts/game_state.gd
+res://scripts/main.gd

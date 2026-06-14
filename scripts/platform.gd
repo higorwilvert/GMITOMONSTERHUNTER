@@ -3,6 +3,11 @@ class_name Platform
 
 const TILE_SIZE := 48
 const TERRAIN_TEXTURE := "res://assets/pixel_adventure/Terrain/Terrain (16x16).png"
+const KENNEY_TILEMAP := "res://assets/kenney_platformer/tilemap.png"
+const KENNEY_TILE_SIZE := 18
+const KENNEY_TILE_GAP := 1
+const KENNEY_TILE_COLUMNS := 20
+const KENNEY_TILE_SCALE := Vector2(2.7, 2.7)
 const SWEET_TOP_LEFT_TILE := "res://assets/kenney_food/Tiles/tile_0004.png"
 const SWEET_TOP_TILE := "res://assets/kenney_food/Tiles/tile_0005.png"
 const SWEET_TOP_ALT_TILE := "res://assets/kenney_food/Tiles/tile_0006.png"
@@ -50,6 +55,9 @@ func _build_visuals() -> void:
 		return
 	if terrain_theme == "moon_upper":
 		_build_sweet_upper_visuals()
+		return
+	if terrain_theme == "ice":
+		_build_kenney_ice_visuals()
 		return
 	var texture := load(TERRAIN_TEXTURE)
 	var region := _theme_region()
@@ -104,6 +112,25 @@ func _build_sweet_upper_visuals() -> void:
 			add_child(tile)
 
 
+func _build_kenney_ice_visuals() -> void:
+	var texture: Texture2D = load(KENNEY_TILEMAP)
+	var cols: int = int(ceil(platform_size.x / TILE_SIZE))
+	var rows: int = max(1, int(round(platform_size.y / TILE_SIZE)))
+	for y in range(rows):
+		for x in range(cols):
+			var tile := Sprite2D.new()
+			tile.texture = texture
+			tile.region_enabled = true
+			tile.region_rect = _kenney_tile_region(_ice_ground_tile(x, y, cols, rows))
+			tile.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+			tile.scale = KENNEY_TILE_SCALE
+			tile.position = Vector2(
+				-platform_size.x * 0.5 + TILE_SIZE * 0.5 + x * TILE_SIZE,
+				-platform_size.y * 0.5 + TILE_SIZE * 0.5 + y * TILE_SIZE
+			)
+			add_child(tile)
+
+
 func _sweet_tile_path(x: int, y: int, cols: int) -> String:
 	if cols <= 1:
 		return SWEET_TOP_TILE if y == 0 else SWEET_FILL_TILE
@@ -152,3 +179,28 @@ func _theme_tint() -> Color:
 			return Color(0.9, 0.92, 1.0, 1.0)
 		_:
 			return Color.WHITE
+
+
+func _ice_ground_tile(x: int, y: int, cols: int, rows: int) -> int:
+	if y == 0:
+		return _tile_from_columns(x, cols, [80, 81, 82, 83])
+	if y == rows - 1:
+		return _tile_from_columns(x, cols, [140, 141, 142, 143])
+	return _tile_from_columns(x, cols, [120, 121, 122, 123])
+
+
+func _tile_from_columns(x: int, cols: int, tile_ids: Array[int]) -> int:
+	if cols <= 1:
+		return tile_ids[1]
+	if x == 0:
+		return tile_ids[0]
+	if x == cols - 1:
+		return tile_ids[3]
+	return tile_ids[2] if x % 2 == 0 else tile_ids[1]
+
+
+func _kenney_tile_region(tile_id: int) -> Rect2:
+	var col: int = tile_id % KENNEY_TILE_COLUMNS
+	var row: int = int(tile_id / KENNEY_TILE_COLUMNS)
+	var step: int = KENNEY_TILE_SIZE + KENNEY_TILE_GAP
+	return Rect2(col * step, row * step, KENNEY_TILE_SIZE, KENNEY_TILE_SIZE)

@@ -48,6 +48,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		animated_sprite.modulate = Color.WHITE
 
+	if GameState.debug_fly_mode:
+		_handle_debug_fly()
+		move_and_slide()
+		_update_animation()
+		return
+
 	var wants_climb := ladder_contacts > 0 and Input.get_axis("climb_up", "climb_down") != 0.0
 	if climbing or wants_climb:
 		_handle_ladder_movement()
@@ -182,6 +188,18 @@ func _handle_ladder_movement() -> void:
 	elif Input.is_action_just_pressed("dash"):
 		climbing = false
 		_handle_dash()
+
+
+func _handle_debug_fly() -> void:
+	climbing = false
+	dash_timer = 0.0
+	has_double_jump = true
+	var input_axis := Input.get_axis("move_left", "move_right")
+	var climb_axis := Input.get_axis("climb_up", "climb_down")
+	if input_axis != 0:
+		facing = sign(input_axis)
+	velocity = Vector2(input_axis, climb_axis) * SPEED * 1.65
+	GameState.restore_energy(GameState.max_dash_energy)
 
 
 func _update_floor_state() -> void:

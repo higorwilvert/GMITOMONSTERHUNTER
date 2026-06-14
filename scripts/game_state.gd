@@ -7,6 +7,7 @@ signal level_changed(level_id, level_name)
 signal checkpoint_changed(position)
 signal player_died
 signal level_completed(level_id)
+signal music_enabled_changed(enabled)
 
 const LEVEL_NAMES := {
 	1: "Lua Acucarada",
@@ -28,6 +29,9 @@ var dash_energy := 100.0
 var current_level := 1
 var checkpoint_position := Vector2.ZERO
 var collected_cans := 0
+var music_enabled := true
+var debug_god_mode := false
+var debug_fly_mode := false
 
 
 func _ready() -> void:
@@ -43,6 +47,12 @@ func ensure_input_actions() -> void:
 	_add_keys("dash", [KEY_SHIFT])
 	_add_keys("interact", [KEY_E])
 	_add_keys("pause", [KEY_ESCAPE])
+	_add_keys("debug_menu", [KEY_F3])
+	_add_keys("debug_fly", [KEY_F4])
+	_add_keys("debug_refill", [KEY_F5])
+	_add_keys("debug_level_1", [KEY_1])
+	_add_keys("debug_level_2", [KEY_2])
+	_add_keys("debug_level_3", [KEY_3])
 
 
 func _add_keys(action: String, keys: Array) -> void:
@@ -71,11 +81,11 @@ func reset_game() -> void:
 
 func start_level(level_id: int) -> void:
 	current_level = level_id
-	health = max_health
+	health = _health_limit()
 	dash_energy = max_dash_energy
 	checkpoint_position = Vector2.ZERO
 	level_changed.emit(current_level, get_level_name())
-	health_changed.emit(health, max_health)
+	health_changed.emit(health, _health_limit())
 	energy_changed.emit(dash_energy, max_dash_energy)
 
 
@@ -98,8 +108,8 @@ func add_score(amount: int) -> void:
 
 
 func heal(amount: int) -> void:
-	health = min(max_health, health + amount)
-	health_changed.emit(health, max_health)
+	health = min(_health_limit(), health + amount)
+	health_changed.emit(health, _health_limit())
 
 
 func restore_energy(amount: float) -> void:
@@ -116,6 +126,10 @@ func spend_energy(amount: float) -> bool:
 
 
 func damage_player(amount: int) -> bool:
+	if debug_god_mode:
+		health = max(health, _health_limit())
+		health_changed.emit(health, _health_limit())
+		return false
 	health = max(health - amount, 0)
 	health_changed.emit(health, max_health)
 	if health <= 0:
@@ -125,10 +139,44 @@ func damage_player(amount: int) -> bool:
 
 
 func revive_player() -> void:
-	health = max_health
+	health = _health_limit()
 	dash_energy = max_dash_energy
-	health_changed.emit(health, max_health)
+	health_changed.emit(health, _health_limit())
 	energy_changed.emit(dash_energy, max_dash_energy)
+
+
+func debug_refill() -> void:
+	health = _health_limit()
+	dash_energy = max_dash_energy
+	health_changed.emit(health, _health_limit())
+	energy_changed.emit(dash_energy, max_dash_energy)
+
+
+func toggle_debug_god() -> bool:
+	debug_god_mode = not debug_god_mode
+	debug_refill()
+	return debug_god_mode
+
+
+func toggle_debug_fly() -> bool:
+	debug_fly_mode = not debug_fly_mode
+	return debug_fly_mode
+
+
+func toggle_music_enabled() -> bool:
+	set_music_enabled(not music_enabled)
+	return music_enabled
+
+
+func set_music_enabled(enabled: bool) -> void:
+	if music_enabled == enabled:
+		return
+	music_enabled = enabled
+	music_enabled_changed.emit(music_enabled)
+
+
+func _health_limit() -> int:
+	return 9 if debug_god_mode else max_health
 
 
 func complete_level(level_id: int) -> void:
