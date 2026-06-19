@@ -1,3 +1,2 @@
-res://scenes/Level2.tscn
+res://scenes/Main.tscn
 res://scripts/level_base.gd
-res://scripts/enemy_turret.gd

@@ -159,7 +159,7 @@ func _build_level_two() -> void:
 	_add_ladder(Vector2(3700, 370), 6)
 	_add_checkpoint(Vector2(2130, 610))
 	_add_platform(Rect2(2378,  20,  1000, 40)) 
-	_add_ladder(Vector2(2540, 20), 6)
+	_add_ladder(Vector2(2330, 20), 6)
 	_add_platform(Rect2(3378, -300,  60,  350))  
 	_add_spike_trap(Vector2(2878, -28), 96, 2.0, 1.0) 
 	_add_turret(Vector2(3300, 20), 1.8, 600.0)  
